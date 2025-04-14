@@ -18,6 +18,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import WishlistPage from "./pages/WishlistPage";
 import AuthPage from "./pages/AuthPage";
+import SellerPage from "./pages/SellerPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,8 @@ const App = () => (
                   <Route path="/explore" element={<ExplorePage />} />
                   <Route path="/artwork/:id" element={<ArtworkDetailPage />} />
                   <Route path="/buyer" element={<ExplorePage />} />
+                  <Route path="/artist" element={<SellerPage />} />
+                  <Route path="/seller" element={<SellerPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   <Route path="/profile" element={<ProfilePage />} />

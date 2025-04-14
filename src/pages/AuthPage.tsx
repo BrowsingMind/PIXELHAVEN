@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
 import { useUser } from '@/contexts/UserContext';
 import Footer from '@/components/Footer';
+import LandingPageNavbar from '@/components/LandingPageNavbar';
 
 const AuthPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('login');
@@ -86,6 +87,8 @@ const AuthPage: React.FC = () => {
   
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-fun-purple/30 to-fun-mint/30">
+      <LandingPageNavbar />
+      
       {/* Background blobs */}
       {blobs}
       
@@ -98,7 +101,7 @@ const AuthPage: React.FC = () => {
             <p className="text-muted-foreground">Your favorite digital art marketplace</p>
           </div>
           
-          <Card className="backdrop-blur-sm bg-white/70 dark:bg-black/50 border-white/20">
+          <Card className="backdrop-blur-sm bg-white/70 dark:bg-black/50 border-white/20 sketchy-border">
             <CardHeader>
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid grid-cols-2 mb-4">
@@ -129,6 +132,7 @@ const AuthPage: React.FC = () => {
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Your username"
                       required
+                      className="fun-input bg-white/50"
                     />
                   </div>
                   
@@ -146,10 +150,11 @@ const AuthPage: React.FC = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Your password"
                       required
+                      className="fun-input bg-white/50"
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-fun-coral text-white hover:bg-fun-coral/90">
                     Login
                   </Button>
                 </form>
@@ -163,6 +168,7 @@ const AuthPage: React.FC = () => {
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Choose a username"
                       required
+                      className="fun-input bg-white/50"
                     />
                   </div>
                   
@@ -175,6 +181,7 @@ const AuthPage: React.FC = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
                       required
+                      className="fun-input bg-white/50"
                     />
                   </div>
                   
@@ -187,49 +194,25 @@ const AuthPage: React.FC = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Create a password"
                       required
+                      className="fun-input bg-white/50"
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-fun-purple text-white hover:bg-fun-purple/90">
                     Create Account
                   </Button>
                 </form>
               )}
             </CardContent>
-            
-            <CardFooter className="flex flex-col space-y-4">
-              <div className="relative w-full">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t"></div>
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white dark:bg-black px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex gap-2">
-                <Button variant="outline" className="flex-1">
-                  Google
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Twitter
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Discord
-                </Button>
-              </div>
-            </CardFooter>
           </Card>
           
           <div className="text-center mt-6">
-            <a 
-              href="/"
+            <Link 
+              to="/"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               ← Back to home
-            </a>
+            </Link>
           </div>
         </div>
       </div>

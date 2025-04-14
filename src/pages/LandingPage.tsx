@@ -42,14 +42,14 @@ const LandingPage: React.FC = () => {
                 Welcome to Pixel Haven
               </span>
               <h1 className="fun-heading">
-                I Woof It
+                Pixel Perfect Creations
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-lg">
                 The premier marketplace for buying and selling unique pixel art creations from talented artists worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/auth">
-                  <Button size="lg" className="bg-white text-fun-coral hover:bg-white/90 fun-button w-full sm:w-auto shadow-lg text-fun-coral">
+                  <Button size="lg" className="bg-white text-fun-coral hover:bg-white/90 fun-button w-full sm:w-auto shadow-lg">
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -62,12 +62,7 @@ const LandingPage: React.FC = () => {
               </div>
             </div>
             <div className="md:w-1/2 grid grid-cols-2 gap-4 max-w-md mx-auto animate-fade-in">
-              <img 
-                src="/lovable-uploads/ab842d39-96fd-4057-9417-68d54b75f5fe.png" 
-                alt="Dog collar" 
-                className="w-full col-span-2 object-contain h-48 animate-float"
-              />
-              {featuredArtworks.slice(0, 3).map((artwork, index) => (
+              {featuredArtworks.slice(0, 4).map((artwork, index) => (
                 <div 
                   key={artwork.id} 
                   className="p-2 bg-white/10 backdrop-blur-sm rounded-lg transform hover:scale-105 transition-transform"
