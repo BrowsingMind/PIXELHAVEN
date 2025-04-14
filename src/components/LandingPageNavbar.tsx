@@ -46,27 +46,30 @@ const LandingPageNavbar: React.FC = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-pixel-primary/90 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        isScrolled ? 'bg-fun-coral/90 backdrop-blur-sm shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-white font-bold text-2xl">
-            Pixel<span className="text-pixel-accent">Haven</span>
+            Pixel<span className="text-fun-yellow">Haven</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
             <NavLink to="/" label="Home" />
             <NavLink to="/explore" label="Explore" />
+            <Link to="/auth" className="text-white hover:text-white/80 text-lg font-medium">
+              Login
+            </Link>
             <Link to="/buyer">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-pixel-primary">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-fun-coral">
                 I am a Buyer
               </Button>
             </Link>
             <Link to="/artist">
-              <Button className="bg-white text-pixel-primary hover:bg-white/90">
+              <Button className="bg-white text-fun-coral hover:bg-white/90">
                 I am an Artist
               </Button>
             </Link>
@@ -98,13 +101,20 @@ const LandingPageNavbar: React.FC = () => {
             >
               Explore
             </Link>
+            <Link 
+              to="/auth" 
+              className="text-white hover:text-white/80 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Login
+            </Link>
             <Link to="/buyer" onClick={() => setIsMenuOpen(false)}>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-pixel-primary w-full">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-fun-coral w-full">
                 I am a Buyer
               </Button>
             </Link>
             <Link to="/artist" onClick={() => setIsMenuOpen(false)}>
-              <Button className="bg-white text-pixel-primary hover:bg-white/90 w-full">
+              <Button className="bg-white text-fun-coral hover:bg-white/90 w-full">
                 I am an Artist
               </Button>
             </Link>

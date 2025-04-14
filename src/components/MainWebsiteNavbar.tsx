@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { 
   ShoppingCart, User, Settings, LogOut, 
-  Search, Menu, X, ChevronDown 
+  Search, Menu, X, ChevronDown, Heart 
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { useCart } from '@/contexts/CartContext';
 import { useUser } from '@/contexts/UserContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import CartPreview from './CartPreview';
 
 const MainWebsiteNavbar: React.FC = () => {
@@ -23,9 +24,11 @@ const MainWebsiteNavbar: React.FC = () => {
   const profileButtonRef = useRef<HTMLDivElement>(null);
   
   const { getCartCount } = useCart();
+  const { items: wishlistItems } = useWishlist();
   const { user, logout } = useUser();
   const location = useLocation();
   const cartCount = getCartCount();
+  const wishlistCount = wishlistItems.length;
 
   // Handle scroll effect
   useEffect(() => {
@@ -95,6 +98,24 @@ const MainWebsiteNavbar: React.FC = () => {
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
             </div>
           
+            {/* Wishlist */}
+            <Link to="/wishlist" className="relative">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="relative"
+              >
+                <Heart className="h-5 w-5" />
+                {wishlistCount > 0 && (
+                  <Badge 
+                    className="absolute -top-2 -right-2 bg-fun-coral px-1.5 min-w-[1.5rem]"
+                  >
+                    {wishlistCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
+
             {/* Cart */}
             <div className="relative" ref={cartButtonRef}>
               <Button 
@@ -153,6 +174,13 @@ const MainWebsiteNavbar: React.FC = () => {
                     Profile
                   </Link>
                   <Link 
+                    to="/wishlist" 
+                    className="flex items-center px-4 py-2 hover:bg-muted transition-colors"
+                  >
+                    <Heart className="mr-2 h-4 w-4" />
+                    Wishlist
+                  </Link>
+                  <Link 
                     to="/settings" 
                     className="flex items-center px-4 py-2 hover:bg-muted transition-colors"
                   >
@@ -173,6 +201,17 @@ const MainWebsiteNavbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
+            <Link to="/wishlist" className="relative">
+              <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <Badge 
+                  className="absolute -top-2 -right-2 bg-fun-coral px-1.5 min-w-[1.5rem]"
+                >
+                  {wishlistCount}
+                </Badge>
+              )}
+            </Link>
+            
             <Link to="/cart" className="relative">
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
@@ -214,6 +253,13 @@ const MainWebsiteNavbar: React.FC = () => {
             >
               <User className="mr-2 h-4 w-4" />
               Profile
+            </Link>
+            <Link 
+              to="/wishlist" 
+              className="px-2 py-3 hover:bg-muted rounded-md transition-colors flex items-center"
+            >
+              <Heart className="mr-2 h-4 w-4" />
+              Wishlist
             </Link>
             <Link 
               to="/settings" 

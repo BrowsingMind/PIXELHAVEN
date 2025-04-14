@@ -111,4 +111,49 @@
   .pixel-btn-outline {
     @apply border-2 border-pixel-primary text-pixel-primary hover:bg-pixel-primary/10;
   }
+
+  /* Fun UI classes inspired by the image */
+  .fun-section {
+    @apply relative overflow-hidden py-24;
+  }
+  
+  .fun-section-coral {
+    @apply bg-fun-coral text-white;
+  }
+  
+  .fun-section-purple {
+    @apply bg-fun-purple text-white;
+  }
+  
+  .fun-section-mint {
+    @apply bg-fun-mint text-pixel-dark;
+  }
+  
+  .fun-section-yellow {
+    @apply bg-fun-yellow text-pixel-dark;
+  }
+  
+  .fun-heading {
+    @apply text-5xl md:text-7xl font-bold mb-8;
+  }
+  
+  .fun-subheading {
+    @apply text-3xl md:text-5xl font-bold mb-6;
+  }
+  
+  .fun-card {
+    @apply bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .fun-button {
+    @apply px-8 py-3 rounded-full font-medium text-white transition-all duration-300;
+  }
+  
+  .fun-input {
+    @apply bg-white/90 border-2 border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white w-full;
+  }
+  
+  .fun-blob {
+    @apply absolute -z-10 rounded-full opacity-70 blur-3xl;
+  }
 }
