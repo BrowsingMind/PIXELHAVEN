@@ -11,13 +11,13 @@ interface ArtworkGridProps {
 
 const ArtworkGrid: React.FC<ArtworkGridProps> = ({ artworks, isLoading = false }) => {
   // Number of skeleton cards to show while loading
-  const skeletonCount = 6;
+  const skeletonCount = 8;
   
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {Array(skeletonCount).fill(0).map((_, index) => (
-          <div key={index} className="w-full">
+          <div key={index} className="w-full animate-pulse">
             <Skeleton className="w-full aspect-square rounded-t-md" />
             <div className="p-4 space-y-2">
               <Skeleton className="h-5 w-3/4" />
@@ -44,8 +44,14 @@ const ArtworkGrid: React.FC<ArtworkGridProps> = ({ artworks, isLoading = false }
   
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {artworks.map((artwork) => (
-        <ArtworkCard key={artwork.id} artwork={artwork} />
+      {artworks.map((artwork, index) => (
+        <div 
+          key={artwork.id}
+          className="opacity-0 animate-fade-in"
+          style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
+        >
+          <ArtworkCard artwork={artwork} />
+        </div>
       ))}
     </div>
   );

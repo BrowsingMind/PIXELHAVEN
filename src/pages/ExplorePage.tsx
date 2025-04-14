@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import MainWebsiteNavbar from '@/components/MainWebsiteNavbar';
 import ArtworkGrid from '@/components/ArtworkGrid';
+import Footer from '@/components/Footer';
 import { mockArtworks } from '@/lib/mockData';
 import { Artwork } from '@/lib/types';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Filter } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -41,6 +42,9 @@ const ExplorePage: React.FC = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Set page title
+    document.title = "Explore Artworks | Pixel Haven";
   }, []);
 
   // Filter and sort artworks
@@ -107,8 +111,17 @@ const ExplorePage: React.FC = () => {
       <MainWebsiteNavbar />
       
       <div className="container mx-auto px-4 pt-24 pb-12">
+        {/* Hero banner */}
+        <div className="rounded-lg bg-gradient-to-r from-pixel-primary/90 to-pixel-accent/90 text-white p-8 mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Explore Pixel Art Masterpieces</h1>
+          <p className="text-lg max-w-2xl opacity-90">
+            Discover unique digital creations from talented pixel artists around the world. 
+            Filter by category, search for specific themes, or sort to find your next favorite piece.
+          </p>
+        </div>
+      
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">Explore Artworks</h1>
+          <h2 className="text-2xl font-bold">Browse Artworks</h2>
           
           <div className="flex items-center gap-2">
             {/* Sort dropdown for desktop */}
@@ -130,8 +143,11 @@ const ExplorePage: React.FC = () => {
             <div className="md:hidden">
               <Drawer>
                 <DrawerTrigger asChild>
-                  <Button variant="outline" size="icon">
+                  <Button variant="outline" size="icon" className="relative">
                     <SlidersHorizontal className="h-4 w-4" />
+                    {(category || sortBy !== "newest") && (
+                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-pixel-accent rounded-full" />
+                    )}
                   </Button>
                 </DrawerTrigger>
                 <DrawerContent>
@@ -256,8 +272,10 @@ const ExplorePage: React.FC = () => {
         
         {/* Active filters indicator */}
         {(searchQuery || category || sortBy !== "newest") && (
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-sm text-muted-foreground">Active filters:</span>
+          <div className="flex items-center gap-2 mb-6 flex-wrap">
+            <span className="text-sm text-muted-foreground flex items-center">
+              <Filter className="h-3 w-3 mr-1" /> Active filters:
+            </span>
             {searchQuery && (
               <div className="bg-muted text-sm px-2 py-1 rounded-md flex items-center gap-1">
                 Search: {searchQuery}
@@ -301,6 +319,8 @@ const ExplorePage: React.FC = () => {
         {/* Artwork Grid */}
         <ArtworkGrid artworks={artworks} isLoading={isLoading} />
       </div>
+      
+      <Footer />
     </>
   );
 };
