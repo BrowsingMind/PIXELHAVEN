@@ -64,12 +64,12 @@ const LandingPageNavbar: React.FC = () => {
               Login
             </Link>
             <Link to="/buyer">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-fun-coral">
+              <Button variant="outline" className="border-white text-white hover:bg-white/20 hover:text-white">
                 I am a Buyer
               </Button>
             </Link>
             <Link to="/artist">
-              <Button className="bg-white text-fun-coral hover:bg-white/90">
+              <Button className="bg-fun-yellow text-fun-coral hover:bg-fun-yellow/90">
                 I am an Artist
               </Button>
             </Link>
@@ -109,12 +109,12 @@ const LandingPageNavbar: React.FC = () => {
               Login
             </Link>
             <Link to="/buyer" onClick={() => setIsMenuOpen(false)}>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-fun-coral w-full">
+              <Button variant="outline" className="border-white text-white hover:bg-white/20 w-full">
                 I am a Buyer
               </Button>
             </Link>
             <Link to="/artist" onClick={() => setIsMenuOpen(false)}>
-              <Button className="bg-white text-fun-coral hover:bg-white/90 w-full">
+              <Button className="bg-fun-yellow text-fun-coral hover:bg-fun-yellow/90 w-full">
                 I am an Artist
               </Button>
             </Link>
